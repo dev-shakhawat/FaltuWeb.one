@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+
+@import "tailwindcss";
+
+
+@theme{
+
+  /* font family */
+  --font-ubuntu: 'Ubuntu', sans-serif;
+
+
+
+  /* animation */
+  --animate-photoPYlogoDropdown: photoPYlogoDropdown .4s ease  ;
+  @keyframes photoPYlogoDropdown {
+    0% {
+      top: 25px;
+      opacity: 0;
+}
+    100% {
+      top: 35px;
+      opacity: 1;
+}
+  }
+}
+
+
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+body::-webkit-search-cancel-button {
+  display: none;
+}
+
+
+
+/* width */
+.customScrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+.customScrollbar::-webkit-scrollbar-track {
+  background: #d1d5dc;
+}
+
+/* Handle */
+.customScrollbar::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+/* Handle on hover */
+.customScrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
+
+
+/* vaier sathe amader dirghodiner somporko */
+
+.click h5 {
+  font-size: 20px;
+  color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* From Uiverse.io by barisdogansutcu */
+.pleaseBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  position: relative;
+  padding: 0 20px;
+  font-size: 18px;
+  text-transform: uppercase;
+  border: 0;
+  box-shadow: hsl(210deg 87% 36%) 0px 7px 0px 0px;
+  background-color: hsl(210deg 100% 44%);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: 31ms cubic-bezier(.5, .7, .4, 1);
+  cursor: pointer;
+}
+
+.pleaseBtn:before {
+  content: attr(alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  inset: 0;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 4px;
+  opacity: 1;
+}
+
+.pleaseBtn:active {
+  box-shadow: none;
+  transform: translateY(7px);
+  transition: 35ms cubic-bezier(.5, .7, .4, 1);
+}
+
+.pleaseBtn:hover:before {
+  transition: all 0s;
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.pleaseBtn i {
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  font-style: normal;
+  transition: all 2s ease;
+  transform: translateY(-20px);
+  opacity: 0;
+}
+
+.pleaseBtn:hover i {
+  transition: all 0.2s ease;
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.pleaseBtn:hover i:nth-child(1) { transition-delay: 0.045s; }
+.pleaseBtn:hover i:nth-child(2) { transition-delay: calc(0.045s * 2); }
+.pleaseBtn:hover i:nth-child(3) { transition-delay: calc(0.045s * 3); }
+.pleaseBtn:hover i:nth-child(4) { transition-delay: calc(0.045s * 4); }
+.pleaseBtn:hover i:nth-child(5) { transition-delay: calc(0.045s * 5); }
+.pleaseBtn:hover i:nth-child(6) { transition-delay: calc(0.045s * 6); }
