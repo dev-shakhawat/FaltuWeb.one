@@ -2,8 +2,10 @@ import React from 'react'
 
 // icon
 import { GoArrowRight } from "react-icons/go";
+import { useNavigate } from 'react-router';
 
 export default function Home() {
+  const navigate = useNavigate();
   return (
     <div className='h-screen flex items-center justify-center overflow-hidden  '>
         <div className="">
@@ -11,19 +13,19 @@ export default function Home() {
           <p className="  text-center font-ubuntu font-medium text-xl py-5  ">TAKE ME TO A USELESS FALTU WEBSITE</p>
 
           {/* button */}
-        <div className="click">
-      <h5>
-      <GoArrowRight />
-        <button className='pleaseBtn' id="button" alt="PLEASE">
-          <i>p</i>
-          <i>l</i>
-          <i>e</i>
-          <i>a</i>
-          <i>s</i>
-          <i>e</i>
-        </button>
-        <GoArrowRight className='rotate-180' />
-      </h5>
+        <div onClick={()=> navigate("/all")} className="click">
+          <h5>
+          <GoArrowRight />
+            <button className='pleaseBtn' id="button" alt="PLEASE">
+              <i>p</i>
+              <i>l</i>
+              <i>e</i>
+              <i>a</i>
+              <i>s</i>
+              <i>e</i>
+            </button>
+            <GoArrowRight className='rotate-180' />
+          </h5>
     </div>
 
         </div>
