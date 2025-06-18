@@ -22,11 +22,11 @@ export default function BookMark() {
   };
 
 
-  useEffect(()=>{
-    let FaltuBookmarks = JSON.parse(localStorage.getItem('FaltuBookMarks'))
+  useEffect(() => {
+    const FaltuBookmarks = JSON.parse(localStorage.getItem('FaltuBookMarks')) || [];
     setUrls(FaltuBookmarks);
-    
-} , [])
+  }, []);
+  
 
 
   const handleRemoveBookMark = (url)=>{
