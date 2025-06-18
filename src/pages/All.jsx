@@ -8,6 +8,9 @@ export default function All() {
 
   const [copiedIndex, setCopiedIndex] = useState(null);
   const [bookmarkedIndex, setBookmarkedIndex] = useState(null);
+  const [isBooked , setIsBooked] = useState(false)
+  console.log(isBooked);
+  
 
   const handleCopy = (url, index) => {
     navigator.clipboard.writeText(url)
@@ -21,9 +24,28 @@ export default function All() {
   };
 
 
-  const handleBookmark = (index) => {
+  const handleBookmark = (url , index) => {
+    let FaltuBookmarks = localStorage.getItem('FaltuBookMarks')
+    if(FaltuBookmarks){
+      FaltuBookmarks = JSON.parse(FaltuBookmarks)
+      let BookMarkedAlready = FaltuBookmarks.filter((booked) => booked.url === url.url)
+      console.log(BookMarkedAlready);
+      if(BookMarkedAlready.length > 0){
+        setIsBooked(true)
+        setTimeout(() => {
+          setIsBooked(false)
+        }, 1000);
+      }
+      else{
+        FaltuBookmarks.push(url)
+        localStorage.setItem('FaltuBookMarks' , JSON.stringify(FaltuBookmarks))
+      }
+    }
+    else{
+      localStorage.setItem('FaltuBookMarks' , JSON.stringify([url]))
+    }
     setBookmarkedIndex(index);
-    setTimeout(() => setBookmarkedIndex(null), 1500); // reset after 1 sec
+    setTimeout(() => setBookmarkedIndex(null), 1000);
   };
 
   return (
@@ -47,7 +69,7 @@ export default function All() {
                 className='text-2xl cursor-pointer'>
                 {copiedIndex === index ? <GoIssueClosed /> : <BsCopy />}
               </button>
-              <button type="button" className='text-2xl cursor-pointer'>
+              <button onClick={()=> handleBookmark(url , index)} type="button" className='text-2xl cursor-pointer'>
                 {bookmarkedIndex === index ? <GoIssueClosed /> : <BsBookmark />}
               </button>
             </div>

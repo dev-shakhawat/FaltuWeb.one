@@ -5,6 +5,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import { TbMenu2 } from "react-icons/tb";
 import { BsBookmarks } from "react-icons/bs";
 import { useLocation, useNavigate } from 'react-router';
+import { FaBookmark } from "react-icons/fa6";
+
+
+
+// book marks
 import PopupMenu from './PopupMenu';
 
 
@@ -58,7 +63,7 @@ function Nav() {
                {/* isPopupMenu */}
                <div ref={PopupRef}  className="">
                  {isPopupMenu && 
-                  <PopupMenu allbtns={allPopupLinks} className={`${isPopupMenu ? " " : "  "} animate-photoPYlogoDropdown   w-[200px] absolute top-[35px] left-0 bg-white border border-gray-300 rounded-md p-2 `} />
+                  <PopupMenu allbtns={allPopupLinks} className={`${isPopupMenu ? " " : "  "} animate-photoPYlogoDropdown z-10  w-[200px] absolute top-[35px] left-0 bg-white border border-gray-300 rounded-md p-2 `} />
                  }
                </div>
             </div>
@@ -67,8 +72,9 @@ function Nav() {
             {/* account */}
             <div className=" flex items-center gap-5">
 
-               <div className="flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer select-none " style={{background: 'linear-gradient(97deg,#6b57ffb3,#3f62ffb3 50%,#00cae0b3)'}}>
-                   <BsBookmarks  className='text-white text-2xl'/>
+               <div onClick={() => navigate('/bookmarks')} className="flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer select-none " style={{background: 'linear-gradient(97deg,#6b57ffb3,#3f62ffb3 50%,#00cae0b3)'}}>
+                   {location.pathname == "/bookmarks" ? <FaBookmark  className='text-white text-2xl'/> : <  BsBookmarks  className='text-white text-2xl'/>}
+                   
                    <span className='text-white text-xl'>BookMarks</span>
                </div>
             </div>
