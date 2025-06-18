@@ -46,7 +46,7 @@ export default function BookMark() {
       {/* web items */}
       <div className="grid grid-cols-1 h-full overflow-y-scroll gap-2 relative customScrollbar">
         {
-          urls.length <= 0 ? 
+          urls?.length <= 0 ? 
           <div className='w-full h-full flex items-center justify-center'>
             <h1 className='text-5xl font-bold text-white  '>No Bookmarks found.</h1>
           </div>
