@@ -44,7 +44,7 @@ export default function BookMark() {
     <div className='w-[50%] mx-auto bg-gray-300 my-3 h-[88vh] p-2 rounded-md'>
         
       {/* web items */}
-      <div className="grid grid-cols-1 h-full overflow-y-scroll gap-2 relative customScrollbar">
+      <div className=" h-full overflow-y-scroll gap-2 relative customScrollbar">
         {
           urls?.length <= 0 ? 
           <div className='w-full h-full flex items-center justify-center'>
@@ -52,7 +52,7 @@ export default function BookMark() {
           </div>
            : 
         urls.map((url, index) => (
-          <div key={index} className="flex justify-between w-full bg-white p-3 rounded-md h-fit ">
+          <div key={index} className="flex justify-between w-full bg-white p-3 rounded-md h-fit mb-2 ">
             
             <Link to={url.url} target="_blank" className="w-full   ">
               <h3 className="text-xl">{url.title}</h3>

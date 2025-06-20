@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router'; // ✅ 'react-router' থেকে 'react-router-dom'
+import { Link } from 'react-router';
 import { GoIssueClosed } from "react-icons/go";
 import { BsCopy, BsBookmark } from "react-icons/bs";
+import { BsBookmarkCheckFill } from "react-icons/bs";
 import { urls } from '../webLinks';
 
 export default function All() {
@@ -9,7 +10,6 @@ export default function All() {
   const [copiedIndex, setCopiedIndex] = useState(null);
   const [bookmarkedIndex, setBookmarkedIndex] = useState(null);
   const [isBooked , setIsBooked] = useState(false)
-  console.log(isBooked);
   
 
   const handleCopy = (url, index) => {
@@ -29,7 +29,7 @@ export default function All() {
     if(FaltuBookmarks){
       FaltuBookmarks = JSON.parse(FaltuBookmarks)
       let BookMarkedAlready = FaltuBookmarks.filter((booked) => booked.url === url.url)
-      console.log(BookMarkedAlready);
+ 
       if(BookMarkedAlready.length > 0){
         setIsBooked(true)
         setTimeout(() => {
@@ -39,13 +39,15 @@ export default function All() {
       else{
         FaltuBookmarks.push(url)
         localStorage.setItem('FaltuBookMarks' , JSON.stringify(FaltuBookmarks))
+        setBookmarkedIndex(index);
+        setTimeout(() => setBookmarkedIndex(null), 1000);
       }
     }
     else{
       localStorage.setItem('FaltuBookMarks' , JSON.stringify([url]))
+      setBookmarkedIndex(index);
+      setTimeout(() => setBookmarkedIndex(null), 1000);
     }
-    setBookmarkedIndex(index);
-    setTimeout(() => setBookmarkedIndex(null), 1000);
   };
 
   return (
@@ -70,7 +72,8 @@ export default function All() {
                 {copiedIndex === index ? <GoIssueClosed /> : <BsCopy />}
               </button>
               <button onClick={()=> handleBookmark(url , index)} type="button" className='text-2xl cursor-pointer'>
-                {bookmarkedIndex === index ? <GoIssueClosed /> : <BsBookmark />}
+                {bookmarkedIndex === index ? <GoIssueClosed /> : localStorage.getItem('FaltuBookMarks') && JSON.parse(localStorage.getItem('FaltuBookMarks')).filter((booked) => booked.url === url.url).length > 0 && <BsBookmarkCheckFill /> || <BsBookmark />}
+                
               </button>
             </div>
 
