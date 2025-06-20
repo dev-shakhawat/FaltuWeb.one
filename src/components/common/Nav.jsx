@@ -55,13 +55,13 @@ function Nav() {
         <div className={`flex justify-between items-center px-5 py-3 border-b border-gray-200 relative  `}>
             
             {/* logo */}
-            <div   className="flex items-center gap-2 cursor-pointer select-none relative ">
+            <div   ref={PopupRef}  className="flex items-center gap-2 cursor-pointer select-none relative ">
 
                <TbMenu2 onClick={() => setIsPopupMenu(prev => !prev)} className='text-2xl' />
                <span onClick={() => navigate('/')} className='text-2xl font-semibold  '>FaltuWeb</span>
 
                {/* isPopupMenu */}
-               <div ref={PopupRef}  className="">
+               <div className="">
                  {isPopupMenu && 
                   <PopupMenu allbtns={allPopupLinks} className={`${isPopupMenu ? " " : "  "} animate-photoPYlogoDropdown z-10  w-[200px] absolute top-[35px] left-0 bg-white border border-gray-300 rounded-md p-2 `} />
                  }
