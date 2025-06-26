@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router'; // ✅ 'react-router' থেকে 'react-router-dom'
 import { GoIssueClosed } from "react-icons/go";
 import { BsCopy } from "react-icons/bs";
+import { FaBookmark } from "react-icons/fa6";
 import { SlClose } from "react-icons/sl";
 
 export default function BookMark() {
@@ -48,7 +49,7 @@ export default function BookMark() {
         {
           urls?.length <= 0 ? 
           <div className='w-full h-full flex items-center justify-center'>
-            <h1 className='text-5xl font-bold text-white  '>No Bookmarks found.</h1>
+            <h1 className='text-5xl font-bold text-black  '>No Bookmarks found.</h1>
           </div>
            : 
         urls.map((url, index) => (
@@ -68,7 +69,7 @@ export default function BookMark() {
                 {copiedIndex === index ? <GoIssueClosed /> : <BsCopy />}
               </button>
               <button onClick={()=> handleRemoveBookMark(url.url)} type="button" className='text-[26px] cursor-pointer'>
-                <SlClose />
+                <FaBookmark />
               </button>
             </div>
 

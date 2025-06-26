@@ -23,12 +23,24 @@ function Nav() {
     const allPopupLinks = [
         {
             name: "Home",
-            url: "/"
+            url: "/",
         },
         {
-            name: "All",
-            url: "/all"
-        }
+            name: "All Webs",
+            url: "/all",
+        },
+        {
+            name: "Add A Web",
+            url: "/add",
+        },
+        {
+            name: "About",
+            url: "/about",
+        },
+        {
+            name: "Privacy",
+            url: "/privacy",
+        },
     ]
 
     useEffect(() => {

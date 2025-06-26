@@ -2,15 +2,14 @@ import React, { useState } from 'react';
 import { Link } from 'react-router';
 import { GoIssueClosed } from "react-icons/go";
 import { BsCopy, BsBookmark } from "react-icons/bs";
-import { BsBookmarkCheckFill } from "react-icons/bs";
 import { urls } from '../webLinks';
+import { FaBookmark } from "react-icons/fa6";
 
 export default function All() {
 
   const [copiedIndex, setCopiedIndex] = useState(null);
   const [bookmarkedIndex, setBookmarkedIndex] = useState(null);
-  const [isBooked , setIsBooked] = useState(false)
-  
+  const [remove , setRemove] = useState(false)
 
   const handleCopy = (url, index) => {
     navigator.clipboard.writeText(url)
@@ -31,36 +30,37 @@ export default function All() {
       let BookMarkedAlready = FaltuBookmarks.filter((booked) => booked.url === url.url)
  
       if(BookMarkedAlready.length > 0){
-        setIsBooked(true)
-        setTimeout(() => {
-          setIsBooked(false)
-        }, 1000);
+       
+        // remove bookmarked
+        let removedBooks = FaltuBookmarks.filter((booked) => booked.url == url)
+        
+        localStorage.setItem('FaltuBookMarks' , JSON.stringify(removedBooks))
+        setRemove((prev) => !prev)
+        setTimeout(() => setRemove((prev) => !prev), 10);
       }
       else{
         FaltuBookmarks.push(url)
         localStorage.setItem('FaltuBookMarks' , JSON.stringify(FaltuBookmarks))
         setBookmarkedIndex(index);
-        setTimeout(() => setBookmarkedIndex(null), 1000);
       }
     }
     else{
       localStorage.setItem('FaltuBookMarks' , JSON.stringify([url]))
       setBookmarkedIndex(index);
-      setTimeout(() => setBookmarkedIndex(null), 1000);
     }
   };
 
   return (
-    <div className='w-[50%] mx-auto bg-gray-300 my-3 h-[88vh] p-2 rounded-md'>
+    <div className='lg:w-[50%] mx-auto bg-gray-300 my-3 h-[88vh] p-2 rounded-md'>
         
       {/* web items */}
       <div className="grid grid-cols-1 h-full overflow-y-scroll gap-2 relative customScrollbar">
         {urls.map((url, index) => (
           <div key={index} className="flex justify-between w-full bg-white p-3 rounded-md">
             
-            <Link to={url.url} target="_blank" className="w-full">
-              <h3 className="text-xl">{url.title}</h3>
-              <p className="text-base">{url.url}</p>
+            <Link to={url.url} target="_blank" className="w-[80%]">
+              <h3 className="text-xl line-clamp-1 text-ellipsis break-words overflow-hidden w-[70%] lg:w-full">{url.title}</h3>
+              <p className="text-base line-clamp-1 text-ellipsis break-words overflow-hidden w-[70%] lg:w-full    ">{url.url}</p>
             </Link>
 
             {/* buttons */}
@@ -72,7 +72,7 @@ export default function All() {
                 {copiedIndex === index ? <GoIssueClosed /> : <BsCopy />}
               </button>
               <button onClick={()=> handleBookmark(url , index)} type="button" className='text-2xl cursor-pointer'>
-                {bookmarkedIndex === index ? <GoIssueClosed /> : localStorage.getItem('FaltuBookMarks') && JSON.parse(localStorage.getItem('FaltuBookMarks')).filter((booked) => booked.url === url.url).length > 0 && <BsBookmarkCheckFill /> || <BsBookmark />}
+                {  localStorage.getItem('FaltuBookMarks') && JSON.parse(localStorage.getItem('FaltuBookMarks')).filter((booked) => booked.url === url.url).length > 0 && <FaBookmark /> || <BsBookmark />}
                 
               </button>
             </div>
