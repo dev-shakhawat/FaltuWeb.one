@@ -51,16 +51,16 @@ export default function All() {
   };
 
   return (
-    <div className='lg:w-[50%] mx-auto bg-gray-300 my-3 h-[88vh] p-2 rounded-md'>
+    <div className='lg:w-[50%] mx-auto md:border border-gray-300 my-3 h-[88vh] p-2 rounded-md'>
         
       {/* web items */}
       <div className="grid grid-cols-1 h-full overflow-y-scroll gap-2 relative customScrollbar">
         {urls.map((url, index) => (
-          <div key={index} className="flex justify-between w-full bg-white p-3 rounded-md">
+          <div key={index} className="border border-gray-300  flex justify-between w-full bg-gray-300 p-3 rounded-md">
             
             <Link to={url.url} target="_blank" className="w-[80%]">
-              <h3 className="text-xl line-clamp-1 text-ellipsis break-words overflow-hidden w-[70%] lg:w-full">{url.title}</h3>
-              <p className="text-base line-clamp-1 text-ellipsis break-words overflow-hidden w-[70%] lg:w-full    ">{url.url}</p>
+              <h3 className="text-xl line-clamp-1 text-ellipsis break-words overflow-hidden w-[90%] lg:w-full">{url.title}</h3>
+              <p className="text-base line-clamp-1 text-ellipsis break-words overflow-hidden w-[90%] lg:w-full    ">{url.url}</p>
             </Link>
 
             {/* buttons */}

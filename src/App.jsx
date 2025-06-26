@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import Home from "./pages/Home";
 import All from "./pages/All";
 import BookMark from "./pages/BookMarks";
+import About from "./pages/About";
+import Privacy from "./pages/Privacy";
 
 
 function App() {
@@ -12,8 +14,10 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="all" element={<All />} />
-        <Route path="bookmarks" element={<BookMark />} />
+        <Route path="/all" element={<All />} />
+        <Route path="/bookmarks" element={<BookMark />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/privacy" element={<Privacy />} />
       </Route>
     </Routes>
   </BrowserRouter>

@@ -3,7 +3,6 @@ import { Link } from 'react-router'; // ✅ 'react-router' থেকে 'react-r
 import { GoIssueClosed } from "react-icons/go";
 import { BsCopy } from "react-icons/bs";
 import { FaBookmark } from "react-icons/fa6";
-import { SlClose } from "react-icons/sl";
 
 export default function BookMark() {
 
@@ -42,22 +41,22 @@ export default function BookMark() {
 
 
   return (
-    <div className='w-[50%] mx-auto bg-gray-300 my-3 h-[88vh] p-2 rounded-md'>
+    <div className='lg:w-[50%] mx-auto md:border border-gray-300 my-3 h-[88vh] p-2 rounded-md'>
         
       {/* web items */}
       <div className=" h-full overflow-y-scroll gap-2 relative customScrollbar">
         {
           urls?.length <= 0 ? 
           <div className='w-full h-full flex items-center justify-center'>
-            <h1 className='text-5xl font-bold text-black  '>No Bookmarks found.</h1>
+            <h1 className='text-5xl font-bold text-black text-center  '>No Bookmarks found.</h1>
           </div>
            : 
         urls.map((url, index) => (
-          <div key={index} className="flex justify-between w-full bg-white p-3 rounded-md h-fit mb-2 ">
+          <div key={index} className="border border-gray-300 mb-2  flex justify-between w-full bg-gray-300 p-3 rounded-md">
             
             <Link to={url.url} target="_blank" className="w-full   ">
-              <h3 className="text-xl">{url.title}</h3>
-              <p className="text-base">{url.url}</p>
+              <h3 className="text-xl line-clamp-1 text-ellipsis break-words overflow-hidden w-[90%] lg:w-full">{url.title}</h3>
+              <p className="text-base line-clamp-1 text-ellipsis break-words overflow-hidden w-[90%] lg:w-full    ">{url.url}</p>
             </Link>
 
             {/* buttons */}
