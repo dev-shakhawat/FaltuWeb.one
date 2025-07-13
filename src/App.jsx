@@ -5,6 +5,7 @@ import All from "./pages/All";
 import BookMark from "./pages/BookMarks";
 import About from "./pages/About";
 import Privacy from "./pages/Privacy";
+import Add from "./pages/Add";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
         <Route path="/all" element={<All />} />
+        <Route path="/add" element={<Add />} />
         <Route path="/bookmarks" element={<BookMark />} />
         <Route path="/about" element={<About />} />
         <Route path="/privacy" element={<Privacy />} />
